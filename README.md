@@ -1,7 +1,7 @@
-```markdown
-# Elevaseo Contact Form
 
-Elevaseo Contact Form is a responsive and user-friendly contact form built with [Next.js](https://nextjs.org) and enhanced with modern libraries for form handling, validation, UI components, and email services. This application allows users to send messages directly from the website, ensuring a seamless and secure communication channel.
+# NextJS 14 App Router  WIth EmailJS Contact Form
+
+NextJS 14 App Router  WIth EmailJS Contact Form is a responsive and user-friendly contact form built with [Next.js](https://nextjs.org) and enhanced with modern libraries for form handling, validation, UI components, and email services. This application allows users to send messages directly from the website, ensuring a seamless and secure communication channel.
 
 ## Table of Contents
 
@@ -25,7 +25,7 @@ Elevaseo Contact Form is a responsive and user-friendly contact form built with 
 - **Responsive Design:** Ensures the form looks great on all devices.
 - **Client-Side Validation:** Real-time validation using [Zod](https://github.com/colinhacks/zod) and [React Hook Form](https://react-hook-form.com/).
 - **Spam Protection:** Implements a honeypot field to deter bots.
-- **Email Integration:** Sends form submissions directly via [EmailJS](https://www.emailjs.com/) without exposing sensitive credentials.
+- **Email Integration:** Sends form submissions directly via [EmailJS](https://www.EmailJS.com/) without exposing sensitive credentials.
 - **User Notifications:** Displays success and error notifications as toast popups using [Shadcn UI](https://ui.shadcn.com/).
 - **Accessible UI Components:** Utilizes accessible and customizable UI components for a better user experience.
 
@@ -34,7 +34,7 @@ Elevaseo Contact Form is a responsive and user-friendly contact form built with 
 - **[Next.js](https://nextjs.org):** A React framework for building server-side rendered and statically generated web applications.
 - **[React Hook Form](https://react-hook-form.com/):** For efficient and easy form management.
 - **[Zod](https://github.com/colinhacks/zod):** A TypeScript-first schema validation library.
-- **[EmailJS](https://www.emailjs.com/):** Enables sending emails directly from the client-side without a backend.
+- **[EmailJS](https://www.EmailJS.com/):** Enables sending emails directly from the client-side without a backend.
 - **[Shadcn UI](https://ui.shadcn.com/):** A set of accessible and customizable UI components.
 - **TypeScript:** Adds static typing to JavaScript for better code quality and maintainability.
 - **[Tailwind CSS](https://tailwindcss.com/):** A utility-first CSS framework for rapid UI development.
@@ -53,8 +53,8 @@ Ensure you have the following installed on your machine:
 1. **Clone the Repository**
 
    ```bash
-   git clone https://github.com/your-username/elevaseo-contact-form.git
-   cd elevaseo-contact-form
+   git clone https://github.com/your-username/NextJS 14 App Router  WIth EmailJS-contact-form.git
+   cd NextJS 14 App Router  WIth EmailJS-contact-form
    ```
 
 2. **Install Dependencies**
@@ -117,7 +117,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser to see the a
 
 ### Environment Variables
 
-The application uses [EmailJS](https://www.emailjs.com/) to handle form submissions. To configure EmailJS, you need to set up the following environment variables.
+The application uses [EmailJS](https://www.EmailJS.com/) to handle form submissions. To configure EmailJS, you need to set up the following environment variables.
 
 1. **Create a `.env.local` File**
 
@@ -126,16 +126,16 @@ The application uses [EmailJS](https://www.emailjs.com/) to handle form submissi
 2. **Add the Following Variables**
 
    ```dotenv
-   NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=your_emailjs_public_key
-   NEXT_PUBLIC_EMAILJS_SERVICE_ID=your_emailjs_service_id
-   NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=your_emailjs_template_id
+   NEXT_PUBLIC_EmailJS_PUBLIC_KEY=your_EmailJS_public_key
+   NEXT_PUBLIC_EmailJS_SERVICE_ID=your_EmailJS_service_id
+   NEXT_PUBLIC_EmailJS_TEMPLATE_ID=your_EmailJS_template_id
    ```
 
    **Note:** Since we're using EmailJS on the client side, these variables need to be public. EmailJS is designed to be safe in this context because it doesn't expose your account's private details.
 
 3. **Obtaining EmailJS Credentials**
 
-   - **Sign Up:** If you haven't already, sign up for an account at [EmailJS](https://www.emailjs.com/).
+   - **Sign Up:** If you haven't already, sign up for an account at [EmailJS](https://www.EmailJS.com/).
    - **Create an Email Service:** Set up an email service in your EmailJS dashboard.
    - **Create an Email Template:** Define the email template that matches the variables used in the form.
    - **Get Your Public Key, Service ID, and Template ID:** These can be found in your EmailJS dashboard under the respective sections.
@@ -143,7 +143,7 @@ The application uses [EmailJS](https://www.emailjs.com/) to handle form submissi
 ## Project Structure
 
 ```
-elevaseo-contact-form/
+NextJS 14 App Router  WIth EmailJS-contact-form/
 ├── components/
 │   ├── ui/
 │   │   ├── alert.tsx
@@ -210,7 +210,7 @@ elevaseo-contact-form/
 
 ### EmailJS
 
-**Why?** [EmailJS](https://www.emailjs.com/) facilitates sending emails directly from the client side without the need for a dedicated backend server. It simplifies the process of integrating email functionalities into web applications securely.
+**Why?** [EmailJS](https://www.EmailJS.com/) facilitates sending emails directly from the client side without the need for a dedicated backend server. It simplifies the process of integrating email functionalities into web applications securely.
 
 ### TypeScript
 
@@ -236,7 +236,7 @@ Deploying a Next.js application is straightforward with platforms like [Vercel](
    vercel
    ```
 
-   Follow the prompts to deploy your application. Ensure that you set the required environment variables (`NEXT_PUBLIC_EMAILJS_PUBLIC_KEY`, `NEXT_PUBLIC_EMAILJS_SERVICE_ID`, `NEXT_PUBLIC_EMAILJS_TEMPLATE_ID`) in your Vercel dashboard under the project settings.
+   Follow the prompts to deploy your application. Ensure that you set the required environment variables (`NEXT_PUBLIC_EmailJS_PUBLIC_KEY`, `NEXT_PUBLIC_EmailJS_SERVICE_ID`, `NEXT_PUBLIC_EmailJS_TEMPLATE_ID`) in your Vercel dashboard under the project settings.
 
 ## Contributing
 
@@ -274,6 +274,4 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## Contact
 
-For any inquiries or feedback, please reach out to the Elevaseo team at [contact@elevaseo.com](mailto:contact@elevaseo.com).
-
-```
+For any inquiries or feedback, please reach out to the NextJS 14 App Router  WIth EmailJS team or open an issue.
