@@ -270,8 +270,6 @@ Contributions are welcome! Please follow these steps to contribute:
 
 This project is licensed under the [MIT License](LICENSE).
 
----
+## 🐛 Feedback and Issues
 
-## Contact
-
-For any inquiries or feedback, please reach out to the NextJS 14 App Router  WIth EmailJS team or open an issue.
+  If you encounter any bugs or have suggestions for improvements, please open an [issue](https://github.com/bastienallain/EmailJS-NextJS14/issues) in the repository.
