@@ -12,20 +12,23 @@ import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
-import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
+
+// Importer useToast depuis Shadcn UI
+import { useToast } from '@/hooks/use-toast';
+
 const contactFormSchema = z.object({
-  name: z.string().min(1, 'Name is required.'),
-  email: z.string().email('Invalid email address.'),
-  message: z.string().min(1, 'Message is required.'),
-  honeypot: z.string().max(0), // Honeypot field should be empty
+  name: z.string().min(1, 'Le nom est requis.'),
+  email: z.string().email('Adresse e-mail invalide.'),
+  message: z.string().min(1, 'Le message est requis.'),
+  honeypot: z.string().max(0), // Le champ Honeypot doit être vide
 });
 
 type ContactFormData = z.infer<typeof contactFormSchema>;
 
 export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitSuccess, setSubmitSuccess] = useState(false);
-  const [submitError, setSubmitError] = useState('');
+  const { toast } = useToast();
+
   const {
     register,
     handleSubmit,
@@ -37,7 +40,7 @@ export default function ContactForm() {
 
   const onSubmit = async (data: ContactFormData) => {
     if (data.honeypot) {
-      // Bot submission detected
+      // Soumission de bot détectée
       return;
     }
 
@@ -48,7 +51,7 @@ export default function ContactForm() {
         process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
         process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
         {
-          to_name: 'Elevaseo team',
+          to_name: 'Équipe Elevaseo', // Remplacez par le nom du destinataire si nécessaire
           user_name: data.name,
           from_name: data.name,
           user_email: data.email,
@@ -57,14 +60,28 @@ export default function ContactForm() {
         process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
       );
 
-      console.log('Email successfully sent!', result.status, result.text);
-      setSubmitSuccess(true);
-      setSubmitError(''); // Clear any previous errors
+      console.log('Email envoyé avec succès !', result.status, result.text);
+
+      // Afficher une notification de succès
+      toast({
+        title: 'Succès',
+        description: 'Votre message a été envoyé !',
+        variant: 'success',
+        duration: 3000, // Durée en millisecondes (3 secondes)
+      });
+
       reset();
     } catch (error) {
-      console.error('Failed to send email. Error:', error);
-      setSubmitError('Failed to send email. Please try again later.');
-      setSubmitSuccess(false); // Ensure success is false
+      console.error("Échec de l'envoi de l'email. Erreur :", error);
+
+      // Afficher une notification d'erreur
+      toast({
+        title: 'Erreur',
+        description:
+          "Échec de l'envoi de votre message. Veuillez réessayer plus tard.",
+        variant: 'destructive',
+        duration: 3000, // Durée en millisecondes (3 secondes)
+      });
     } finally {
       setIsSubmitting(false);
     }
@@ -73,20 +90,20 @@ export default function ContactForm() {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div>
-        <Label htmlFor="name">Name</Label>
+        <Label htmlFor="name">Nom</Label>
         <Input id="name" {...register('name')} />
         {errors.name && <p className="text-red-500">{errors.name.message}</p>}
       </div>
 
       <div>
-        <Label htmlFor="email">Email</Label>
+        <Label htmlFor="email">E-mail</Label>
         <Input id="email" type="email" {...register('email')} />
         {errors.email && <p className="text-red-500">{errors.email.message}</p>}
       </div>
 
-      {/* Honeypot Field */}
+      {/* Champ Honeypot */}
       <div style={{ display: 'none' }}>
-        <Label htmlFor="honeypot">Leave this field blank</Label>
+        <Label htmlFor="honeypot">Laissez ce champ vide</Label>
         <Input id="honeypot" {...register('honeypot')} />
       </div>
 
@@ -99,24 +116,8 @@ export default function ContactForm() {
       </div>
 
       <Button type="submit" disabled={isSubmitting}>
-        {isSubmitting ? 'Sending...' : 'Send'}
+        {isSubmitting ? 'Envoi en cours...' : 'Envoyer'}
       </Button>
-
-      {/* Success Alert */}
-      {submitSuccess && (
-        <Alert variant="success" className="mt-4">
-          <AlertTitle>Success</AlertTitle>
-          <AlertDescription>Your message has been sent!</AlertDescription>
-        </Alert>
-      )}
-
-      {/* Error Alert */}
-      {submitError && (
-        <Alert variant="destructive" className="mt-4">
-          <AlertTitle>Error</AlertTitle>
-          <AlertDescription>{submitError}</AlertDescription>
-        </Alert>
-      )}
     </form>
   );
 }
